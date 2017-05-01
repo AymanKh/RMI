@@ -1,5 +1,8 @@
 package client;
 
+import com.jcraft.jsch.*;
+import java.awt.*;
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -74,15 +77,13 @@ public class ClientDriver {
 		System.out.println("This is a new client");
 		String serverURL = "rmi://localhost/RMIServer";
 		ServerInterface server = (ServerInterface) Naming.lookup(serverURL);		
-		Client newClient = null;
-		for(int i = 0; i < Integer.parseInt(args[0]);i++) {
-			newClient = new Client(args[0], server);
-		}
+		Client newClient = new Client(args[0], server);
+		
+		
 		
 		new FileWatcher(new File("/Users/A_Y_M_A_N/Documents/workspace/RMI/RMIClientSide/bin/snapshotCommand.txt"), newClient).start();
 		readInput(server);
 		
-	
 	}
 
 }

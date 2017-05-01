@@ -1,6 +1,7 @@
 package common;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.StandardWatchEventKinds;
@@ -32,7 +33,7 @@ public class FileWatcher extends Thread {
     	System.out.println("file changed !");
     	Snapshot snaphotNVM = client.getSnapshot();
     	
-//    	writeToNVM(snapshotNVM);
+    	snaphotNVM.takeSnapShot();
     	
     }
 
