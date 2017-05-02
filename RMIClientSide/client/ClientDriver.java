@@ -78,9 +78,7 @@ public class ClientDriver {
 		String serverURL = "rmi://localhost/RMIServer";
 		ServerInterface server = (ServerInterface) Naming.lookup(serverURL);		
 		Client newClient = new Client(args[0], server);
-		
-		
-		
+	
 		new FileWatcher(new File("/Users/A_Y_M_A_N/Documents/workspace/RMI/RMIClientSide/bin/snapshotCommand.txt"), newClient).start();
 		readInput(server);
 		

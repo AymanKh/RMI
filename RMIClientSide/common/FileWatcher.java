@@ -11,6 +11,9 @@ import java.nio.file.WatchService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import com.jcraft.jsch.JSchException;
+import com.jcraft.jsch.SftpException;
+
 import client.Client;
 import client.Snapshot;
 
@@ -28,7 +31,7 @@ public class FileWatcher extends Thread {
     public boolean isStopped() { return stop.get(); }
     public void stopThread() { stop.set(true); }
 
-    public void doOnChange() {
+    public void doOnChange() throws JSchException, IOException, SftpException {
         // Write the snapshot to NVM
     	System.out.println("file changed !");
     	Snapshot snaphotNVM = client.getSnapshot();
