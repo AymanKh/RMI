@@ -73,7 +73,7 @@ public class ClientDriver {
 		
 	}
 	
-	public static void main (String[] args) throws MalformedURLException, RemoteException, NotBoundException {
+	public static void main (String[] args) throws NotBoundException, JSchException, IOException, SftpException {
 		
 		System.out.println("Starting a new client...");
 		String serverURL = "rmi://localhost/RMIServer";
@@ -82,7 +82,9 @@ public class ClientDriver {
 		InputParameters input = new InputParameters(args[0], args[1], args[2], args[3]);
 		Client newClient = new Client(server, input);
 		new FileWatcher(new File("/Users/A_Y_M_A_N/Documents/workspace/RMI/RMIClientSide/bin/"+  newClient.snapshotParams.event_filename), newClient).start();
-		readInput(server);
+//		readInput(server);
+		newClient.run_gd();
+		System.out.println("Finished Gradient Descent");
 		
 	}
 
